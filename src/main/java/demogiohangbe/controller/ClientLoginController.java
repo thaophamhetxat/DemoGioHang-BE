@@ -10,9 +10,7 @@
 //import javax.servlet.http.HttpServletResponse;
 //import javax.servlet.http.HttpSession;
 //
-//import com.trungtamjava.dao.UserDao;
-//import com.trungtamjava.dao.impl.UserDaoImpl;
-//import com.trungtamjava.model.User;
+//
 //
 //@WebServlet(urlPatterns = "/login-member") // ?errCode=100
 //public class ClientLoginController extends HttpServlet {

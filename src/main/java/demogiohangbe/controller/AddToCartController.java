@@ -1,5 +1,12 @@
 //package demogiohangbe.controller;
 //
+//import demogiohangbe.model.BillProduct;
+//import demogiohangbe.model.Product;
+//import demogiohangbe.service.Impl.IProductService;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.web.bind.annotation.*;
+//
 //import java.io.IOException;
 //import java.util.HashMap;
 //import java.util.Map;
@@ -11,53 +18,54 @@
 //import javax.servlet.http.HttpServletResponse;
 //import javax.servlet.http.HttpSession;
 //
-//import com.trungtamjava.dao.ProductDao;
-//import com.trungtamjava.dao.impl.ProductDaoImpl;
-//import com.trungtamjava.model.BillProduct;
-//import com.trungtamjava.model.Product;
 //
 //@WebServlet(urlPatterns = "/add-to-cart") // ?pid=1
-//public class AddToCartController extends HttpServlet {
-//	ProductDao productDao = new ProductDaoImpl();//gia su co 1 class dao de truy van database du lieu
+//@RestController
+//@RequestMapping("/api/products/")
+//@CrossOrigin("*")
+//public class AddToCartController {
+//    @Autowired
+//    IProductService iProductService;
 //
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String pId = req.getParameter("pid");
-//		Product product = productDao.getId(Integer.parseInt(pId));
+////	ProductDao productDao = new ProductDaoImpl();//gia su co 1 class dao de truy van database du lieu
 //
-//		HttpSession session = req.getSession();
-//		Object obj = session.getAttribute("cart");// luu tam vao session
-//		if (obj == null) {// tao moi
-//			// Tao mat hang
-//			BillProduct billProduct = new BillProduct();
-//			billProduct.setProduct(product);
-//			billProduct.setQuantity(1);
-//			billProduct.setUnitPrice(product.getPrice());
-//			// gio hang co nhieu mat hang
-//			Map<String, BillProduct> map = new HashMap<>();
-//			map.put(pId, billProduct);// them mat hang vao ds
 //
-//			session.setAttribute("cart", map);// luu tam vao session
-//		} else {
-//			Map<String, BillProduct> map = (Map<String, BillProduct>) obj;
+//    @GetMapping
+//    public ResponseEntity<Product> AddToCart(@PathVariable long id, HttpServletRequest req, HttpServletResponse resp) {
 //
-//			BillProduct billProduct = map.get(pId);
+//        HttpSession session = req.getSession();
+//        Object object = session.getAttribute("cart");// luu tam vao session
+//        if (object == null) {// tao moi
+//            // Tao mat hang
+//            BillProduct billProduct = new BillProduct();
+//            billProduct.setProduct(product);
+//            billProduct.setQuantity(1);
+//            billProduct.setUnitPrice(product.getPrice());
+//            // gio hang co nhieu mat hang
+//            Map<String, BillProduct> map = new HashMap<>();
+//            map.put(pId, billProduct);// them mat hang vao ds
 //
-//			if (billProduct == null) {
-//				billProduct = new BillProduct();
-//				billProduct.setProduct(product);
-//				billProduct.setQuantity(1);
-//				billProduct.setUnitPrice(product.getPrice());
+//            session.setAttribute("cart", map);// luu tam vao session
+//        } else {
+//            Map<String, BillProduct> map = (Map<String, BillProduct>) obj;
 //
-//				map.put(pId, billProduct);
-//			} else {
+//            BillProduct billProduct = map.get(pId);
 //
-//				billProduct.setQuantity(billProduct.getQuantity() + 1);
-//			}
+//            if (billProduct == null) {
+//                billProduct = new BillProduct();
+//                billProduct.setProduct(product);
+//                billProduct.setQuantity(1);
+//                billProduct.setUnitPrice(product.getPrice());
 //
-//			session.setAttribute("cart", map);// luu tam vao session
-//		}
+//                map.put(pId, billProduct);
+//            } else {
 //
-//		resp.sendRedirect(req.getContextPath() + "/cart");
-//	}
+//                billProduct.setQuantity(billProduct.getQuantity() + 1);
+//            }
+//
+//            session.setAttribute("cart", map);// luu tam vao session
+//        }
+//        return new ResponseEntity(products, HttpStatus.OK);
+//        resp.sendRedirect(req.getContextPath() + "/cart");
+//    }
 //}

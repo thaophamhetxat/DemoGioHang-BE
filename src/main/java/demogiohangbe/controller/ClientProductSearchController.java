@@ -10,12 +10,9 @@
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 //
-//import com.trungtamjava.dao.CategoryDao;
-//import com.trungtamjava.dao.ProductDao;
-//import com.trungtamjava.dao.impl.CategoryDaoImpl;
-//import com.trungtamjava.dao.impl.ProductDaoImpl;
-//import com.trungtamjava.model.Category;
-//import com.trungtamjava.model.Product;
+//
+//import demogiohangbe.model.Category;
+//import demogiohangbe.model.Product;
 //
 //@WebServlet(urlPatterns = "/client/product/search")
 //public class ClientProductSearchController extends HttpServlet {
